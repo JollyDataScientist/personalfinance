@@ -25,23 +25,16 @@ def main():
         basics_expenses += groceries + eating_out
 
 with st.expander("Essentials"):
-    col1, col2, col3 = st.columns([1,2,2])
-    
-    col1.write("Power:")
-    power = col2.number_input("", value=0.00, step=0.01)
-
-    col1.write("Water:")
-    water = col2.number_input("", value=0.00, step=0.01)
-
-    col1.write("Heat:")
-    heat = col2.number_input("", value=0.00, step=0.01)
-
-    col1.write("Toiletries:")
-    toiletries = col3.number_input("", value=0.00, step=0.01)
-
-    col1.write("Other Consumables:")
-    other_consumables = col3.number_input("", value=0.00, step=0.01)
-
+    col1, col2 = st.columns(2)
+    power = col2.number_input("Power:", value=0.00, step=0.01)
+    col3, col4 = st.columns(2)
+    water = col4.number_input("Water:", value=0.00, step=0.01)
+    col5, col6 = st.columns(2)
+    heat = col6.number_input("Heat:", value=0.00, step=0.01)
+    col7, col8 = st.columns(2)
+    toiletries = col8.number_input("Toiletries:", value=0.00, step=0.01)
+    col9, col10 = st.columns(2)
+    other_consumables = col10.number_input("Other Consumables:", value=0.00, step=0.01)
     basics_expenses += power + water + heat + toiletries + other_consumables
 
 
