@@ -1,5 +1,3 @@
-import streamlit as st
-
 def main():
     st.title("Monthly Expenses Tracker")
     
@@ -10,40 +8,37 @@ def main():
 
     # Basics Section
     st.header("Basics")
-    basics_expenses = 0
 
-    with st.expander("Rent/Mortgage"):
-        col1, col2 = st.columns(2)
-        rent_mortgage = col2.number_input("Rent/Mortgage:", value=0.00, step=0.01)
-        basics_expenses += rent_mortgage
+    rent_mortgage = st.number_input("Rent/Mortgage:", value=0.00, step=0.01)
+    total_expenses += rent_mortgage
 
-    with st.expander("Food"):
-        col1, col2 = st.columns(2)
-        groceries = col2.number_input("Groceries:", value=0.00, step=0.01)
-        col3, col4 = st.columns(2)
-        eating_out = col4.number_input("Eating Out:", value=0.00, step=0.01)
-        basics_expenses += groceries + eating_out
+    st.subheader("Food")
+    groceries = st.number_input("Groceries:", value=0.00, step=0.01)
+    eating_out = st.number_input("Eating Out:", value=0.00, step=0.01)
+    total_expenses += groceries + eating_out
 
-with st.expander("Essentials"):
-    col1, col2, col3 = st.columns([1,2,2])
-    col1.write("Power:")
-    power = col2.number_input("", value=0.00, step=0.01, key="power_input")
-    col1.write("Water:")
-    water = col2.number_input("", value=0.00, step=0.01, key="water_input")
-    col1.write("Heat:")
-    heat = col2.number_input("", value=0.00, step=0.01, key="heat_input")
-    col1.write("Toiletries:")
-    toiletries = col3.number_input("", value=0.00, step=0.01, key="toiletries_input")
-    col1.write("Other Consumables:")
-    other_consumables = col3.number_input("", value=0.00, step=0.01, key="other_consumables_input")
+    st.subheader("Essentials")
+    power = st.number_input("Power:", value=0.00, step=0.01)
+    water = st.number_input("Water:", value=0.00, step=0.01)
+    heat = st.number_input("Heat:", value=0.00, step=0.01)
+    toiletries = st.number_input("Toiletries:", value=0.00, step=0.01)
+    other_consumables = st.number_input("Other Consumables:", value=0.00, step=0.01)
+    total_expenses += power + water + heat + toiletries + other_consumables
 
-    basics_expenses += power + water + heat + toiletries + other_consumables
+    st.subheader("Monthly Expenses")
+    car_payments = st.number_input("Car Payments:", value=0.00, step=0.01)
+    cell_phone = st.number_input("Cell Phone:", value=0.00, step=0.01)
+    internet = st.number_input("Internet:", value=0.00, step=0.01)
+    media_streaming = st.number_input("Media/Streaming:", value=0.00, step=0.01)
+    other_subscriptions = st.number_input("Other Subscriptions:", value=0.00, step=0.01)
+    total_expenses += car_payments + cell_phone + internet + media_streaming + other_subscriptions
 
-
-    total_expenses += basics_expenses
-    st.sidebar.text(f"Basics: ${basics_expenses:,.2f}")
-    
-    # Continue with the rest of the sections...
+    st.subheader("Outstanding Debts")
+    student_loan = st.number_input("Student Loan:", value=0.00, step=0.01)
+    credit_card = st.number_input("Credit Card:", value=0.00, step=0.01)
+    line_of_credit = st.number_input("Line of Credit:", value=0.00, step=0.01)
+    other_loans = st.number_input("Other Loans:", value=0.00, step=0.01)
+    total_expenses += student_loan + credit_card + line_of_credit + other_loans
 
     # Display Summary on Sidebar
     st.sidebar.text(f"Total Expenses: ${total_expenses:,.2f}")
