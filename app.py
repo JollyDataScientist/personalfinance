@@ -1,3 +1,5 @@
+import streamlit as st
+
 def main():
     st.title("Monthly Expenses Tracker")
     
