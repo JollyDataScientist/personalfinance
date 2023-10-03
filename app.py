@@ -5,7 +5,7 @@ def main():
     
     # Sidebar
     st.sidebar.title("Summary")
-    net_monthly = st.sidebar.number_input("Net Monthly Take-Home:", value=0.00, step=0.01)
+    net_monthly = st.sidebar.number_input("Net Monthly Take-Home", value=0.00, step=0.01)
     total_expenses = 0
 
     # Basics Section
@@ -43,7 +43,7 @@ def main():
     total_expenses += student_loan + credit_card + line_of_credit + other_loans
 
     # Display Summary on Sidebar
-    st.sidebar.text(f"Total Expenses: ${total_expenses:,.2f}")
+    st.sidebar.text(f"Basic Expenses: ${total_expenses:,.2f}")
     remaining_balance = net_monthly - total_expenses
     st.sidebar.text(f"Remaining Balance: ${remaining_balance:,.2f}")
 
